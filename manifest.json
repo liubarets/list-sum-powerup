@@ -1,0 +1,16 @@
+{
+  "name": "List Sum",
+  "description": "Складає числові бейджі карток і показує суму біля назви списку",
+  "author": "OL",
+  "icon": { "url": "./icon.png" },
+
+  "capabilities": {
+    "list-badges": {
+      "url": "./listBadges.html",
+      "height": 32
+    }
+  },
+
+  "connectors": { "iframe": { "url": "*" } },
+  "permissions": { "app": "read" }
+}
