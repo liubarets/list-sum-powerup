@@ -1,38 +1,24 @@
 {
   "name": "List Sum + Story Points",
-  "description": "Показує суму Story Points праворуч у заголовку списку та додає кнопку Story Points у картці",
+  "description": "Сума Story Points у заголовку списку + кнопка Story Points у картці",
   "author": "liubarets",
 
   "icon": { "url": "./icon.png" },
 
   "capabilities": {
-    /* ▶ сумарний бейдж праворуч */
     "list-header-section": {
       "url": "./listHeader.html",
-      "height": 34              /* висота тулбару Trello */
-    },
-
-    /* ▶ кнопка в картці */
-    "card-buttons": [
-      {
-        "text": "Story Points",   /* напис на кнопці */
-        "callback": {
-          "url": "./storyPoints.html",
-          "height": 160          /* висота pop-up */
-        }
-      }
-    ]
+      "height": 34
+    }
+    /* card-buttons додаємо динамічно у connector.js */
   },
 
-  /* службовий конектор iframe (може бути будь-яка існуюча html-сторінка) */
   "connectors": {
-    "iframe": {
-      "url": "https://liubarets.github.io/list-sum-powerup/connector.html"
-    }
+    "iframe": { "url": "./connector.html" }
   },
 
   "permissions": {
-    "app": "read",   /* читаємо борд для підсумку */
-    "card": "write"  /* пишемо storyPoints у картку */
+    "app" : "read",
+    "card": "write"
   }
 }
