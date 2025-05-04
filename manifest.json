@@ -1,6 +1,6 @@
 {
-  "name": "List Sum",
-  "description": "Сумує числові бейджі карток і показує результат праворуч від назви списку",
+  "name": "List Sum + Story Points",
+  "description": "Right-side list total + Story Points editor на картці",
   "author": "liubarets",
 
   "icon": { "url": "./icon.png" },
@@ -9,9 +9,19 @@
     "list-header-section": {
       "url": "./listHeader.html",
       "height": 34
-    }
+    },
+    "card-buttons": [
+      {
+        "text": "Story Points",
+        "condition": "edit",
+        "callback": {
+          "url": "./storyPoints.html",
+          "height": 160
+        }
+      }
+    ]
   },
 
   "connectors": { "iframe": { "url": "*" } },
-  "permissions": { "app": "read" }
+  "permissions": { "app": "read", "card": "write" }
 }
