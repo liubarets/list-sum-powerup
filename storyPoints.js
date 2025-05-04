@@ -12,13 +12,11 @@ const render = current => {
                        .then(() => t.closeModal());
     document.body.appendChild(b);
   });
-
-  // кнопка Remove
   const rm = document.createElement('button');
+  rm.id='remove';
   rm.textContent = 'Remove';
-  rm.style.borderColor = '#e33'; rm.style.color = '#e33';
   rm.onclick = () => t.remove('card','shared','storyPoints')
-                      .then(() => t.closeModal());
+                     .then(() => t.closeModal());
   document.body.appendChild(rm);
 };
 
