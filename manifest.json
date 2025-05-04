@@ -2,7 +2,6 @@
   "name": "List Sum + Story Points",
   "description": "Сума Story Points у заголовку списку + кнопка Story Points у картці",
   "author": "liubarets",
-
   "icon": { "url": "./icon.png" },
 
   "capabilities": {
@@ -10,7 +9,7 @@
       "url": "./listHeader.html",
       "height": 34
     }
-    /* card-buttons додаємо динамічно у connector.js */
+    /* card-buttons ініціалізується динамічно у connector.js */
   },
 
   "connectors": {
