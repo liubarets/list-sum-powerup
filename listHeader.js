@@ -1,24 +1,21 @@
 /* global TrelloPowerUp */
 if (window.TrelloPowerUp){
-  const t = TrelloPowerUp.iframe();
+  const t   = TrelloPowerUp.iframe();
   const box = document.getElementById('sum');
-  let listId;
 
-  const recalc = () => {
+  const recalc = () =>
     t.cards('id','shared').then(cards => {
-      let tot = 0;
+      let total = 0;
       cards.forEach(c => {
         const v = parseFloat(c.shared?.storyPoints);
-        if (!isNaN(v)) tot += v;
+        if (!isNaN(v)) total += v;
       });
-      box.textContent = tot % 1 ? tot.toFixed(1) : tot;
+      box.textContent = total % 1 ? total.toFixed(1) : total;
       t.render();
     });
-  };
 
-  t.list('id').then(l=>{
-    listId = l.id;
+  t.list('id').then(() => {
     recalc();
-    setInterval(recalc,2000);
+    setInterval(recalc, 2000);
   });
 }
