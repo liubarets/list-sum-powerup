@@ -1,16 +1,21 @@
 {
   "name": "List Sum",
-  "description": "Сумує числові бейджі карток у колонці та показує праворуч від назви",
+  "description": "Показує праворуч від назви списку суму всіх числових бейджів видимих карток і оновлює її кожні 2 с",
   "author": "liubarets",
   "icon": { "url": "./icon.png" },
 
   "capabilities": {
     "list-header-section": {
       "url": "./listHeader.html",
-      "height": 34       /* висота тулбару Trello */
+      "height": 34          /* висота тулбару Trello у px */
     }
   },
 
-  "connectors": { "iframe": { "url": "*" } },
-  "permissions": { "app": "read" }
+  "connectors": {
+    "iframe": { "url": "*" }  /* дозволяє вантажити HTML із будь-якого домена (GitHub Pages) */
+  },
+
+  "permissions": {
+    "app": "read"             /* потрібен тільки доступ “читати” */
+  }
 }
