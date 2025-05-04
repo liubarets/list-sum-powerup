@@ -1,13 +1,14 @@
 {
   "name": "List Sum",
-  "description": "Сума числових бейджів карток (праворуч у заголовку списку)",
+  "description": "Показує праворуч від назви списку суму всіх числових бейджів видимих карток",
   "author": "liubarets",
+
   "icon": { "url": "./icon.png" },
 
   "capabilities": {
-    "list-header-section": {          // ← єдина capability
+    "list-header-section": {          // ← ЄДИНА capability
       "url": "./listHeader.html",
-      "height": 34
+      "height": 34                    // висота тулбару Trello
     }
   },
 
