@@ -1,7 +1,7 @@
 /* global TrelloPowerUp */
 TrelloPowerUp.initialize({
 
-  /* ▶ кнопка в картці */
+  // ▶ додаємо кнопку у кожну картку
   'card-buttons': () => [{
     text: 'Story Points',
     icon: 'https://img.icons8.com/ios/20/000000/counter.png',
