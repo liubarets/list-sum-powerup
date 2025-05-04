@@ -1,27 +1,20 @@
 /* global TrelloPowerUp */
-const t = TrelloPowerUp.iframe();
-const $sum = document.getElementById('sum');
-let listId;
+const t   = TrelloPowerUp.iframe();
+const box = document.getElementById('sum');
 
-/* читаємо карти списку через Trello REST і рахуємо суму бейджів */
-const fetchSum = () => {
-  t.getRestApi()
-    .get(`/lists/${listId}/cards`, { fields: 'badges' })
-    .then(cards => {
-      let total = 0;
-      cards.forEach(card =>
-        (card.badges || []).forEach(badge => {
-          const v = parseFloat(badge.text);
-          if (!isNaN(v)) total += v;
-        })
-      );
-      $sum.textContent = total % 1 ? total.toFixed(1) : total;
-    })
-    .catch(() => ($sum.textContent = '?'));
+/** Повертає суму числових бейджів тільки у ВИДИМИХ картках */
+const recalc = () => {
+  t.cards('badges').then(cards => {
+    let total = 0;
+    cards.forEach(card =>
+      (card.badges || []).forEach(b => {
+        const v = parseFloat(b.text);
+        if (!isNaN(v)) total += v;
+      })
+    );
+    box.textContent = total % 1 ? total.toFixed(1) : total;
+  }).catch(() => (box.textContent = '?'));
 };
 
-t.list('id').then(list => {
-  listId = list.id;
-  fetchSum();                 // перший підрахунок
-  setInterval(fetchSum, 2000); // автооновлення кожні 2 с
-});
+recalc();                  // перший підрахунок одразу
+setInterval(recalc, 2000); // автооновлення ≤ 2 с
