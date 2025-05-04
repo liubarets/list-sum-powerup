@@ -1,22 +1,24 @@
 /* global TrelloPowerUp */
-
-if (window.TrelloPowerUp) {          // ← щоб при прямому відкритті у браузері не падало
-  const t   = TrelloPowerUp.iframe();
+if (window.TrelloPowerUp){
+  const t = TrelloPowerUp.iframe();
   const box = document.getElementById('sum');
+  let listId;
 
   const recalc = () => {
-    t.cards('badges').then(cards => {
-      let total = 0;
-      cards.forEach(c =>
-        (c.badges || []).forEach(b => {
-          const v = parseFloat(b.text);
-          if (!isNaN(v)) total += v;
-        })
-      );
-      box.textContent = total % 1 ? total.toFixed(1) : total;
-    }).catch(() => (box.textContent = '?'));
+    t.cards('id','shared').then(cards => {
+      let tot = 0;
+      cards.forEach(c => {
+        const v = parseFloat(c.shared?.storyPoints);
+        if (!isNaN(v)) tot += v;
+      });
+      box.textContent = tot % 1 ? tot.toFixed(1) : tot;
+      t.render();
+    });
   };
 
-  recalc();                 // одразу
-  setInterval(recalc, 2000); // автооновлення
+  t.list('id').then(l=>{
+    listId = l.id;
+    recalc();
+    setInterval(recalc,2000);
+  });
 }
