@@ -1,13 +1,13 @@
 {
   "name": "List Sum",
-  "description": "Складає числові бейджі карток і показує суму біля назви списку",
-  "author": "OL",
+  "description": "Сумує числові бейджі карток у колонці та показує праворуч від назви",
+  "author": "liubarets",
   "icon": { "url": "./icon.png" },
 
   "capabilities": {
-    "list-badges": {
-      "url": "./listBadges.html",
-      "height": 32
+    "list-header-section": {
+      "url": "./listHeader.html",
+      "height": 34       /* висота тулбару Trello */
     }
   },
 
